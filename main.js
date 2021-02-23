@@ -1,6 +1,8 @@
 'use strict';
 
-const { token } = require('./config.json'),
+require('dotenv').config()
+
+const { token } = process.env.DISCORD_TOKEN,
     { Client, Collection } = require('discord.js'),
     { readdirSync } = require('fs'),
     { join } = require("path"),
@@ -12,17 +14,16 @@ class Class extends Client {
     constructor(token) {
         super({ messageCacheMaxSize: 15 });
         this.bot = this;
-        this.config = require('./config.json');
         this.maincolor = 11007;
-        this.prefix = 'ar!';
+        this.prefix = '.';
         this.red = 16711680;
         this.green = 32560;
-        this.footer = 'Anti-Raid by Emmanuel#1943 and Matthieu#2050 | Command Handler by ArviX#8443';
+        this.footer = 'Globalbans';
         this.bdd = mysql.createConnection({
-            host: "",
-            user: "",
-            password: "",
-            database: ""
+            host: process.env.MYSQL_HOST,
+            user: process.env.MYSQL_USER,
+            password: process.env.MYSQL_PASSWORD,
+            database: process.env.MYSQL_DATABASE,
         });
         try {
             this.launch().then(() => { console.log(blue('All is launched, Connecting to Discord..')); })
@@ -32,7 +33,7 @@ class Class extends Client {
         this.login(token);
         this.bdd.connect(function (err) {
             if (err) throw err;
-            console.log("Connecté a " + blue("MySQL"));
+            console.log("Connected to " + blue("MySQL"));
         })
     }
 

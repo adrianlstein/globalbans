@@ -1,3 +1,5 @@
+Updated to be able to actually develop with this by "Nur Nicht Prüde#1151"
+
 # Anti-Raid
 The latest version of my Anti-Raid discord bot with new features, new structures and all the latest news.
 Here are the features contained in this version :
@@ -21,7 +23,7 @@ Clone the repo using command ` git clone https://github.com/Emmanuel-Novus/anti-
 
 ## » Setup :
 
-Open the config.json file and replace fields by your values. Install nessesary package with the command `npm install` in the bot root folder.
+Create a .env file with the template from .env.example and enter your data. Install nessesary package with the command `npm install` in the bot root folder.
 Indicate your database accesses in the main.js file (and import db.sql into it)
 
 ## » Start :

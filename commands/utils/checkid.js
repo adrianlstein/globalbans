@@ -13,10 +13,37 @@ class CheckID extends Command {
             aliases: ['checkuser']
         });
     }
-
+    
     async run(client, message, args) {
-        let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
-        if (!member) return message.channel.send("Please specify a correct ID or mention correctly.");
+	   let member = message.mentions.members.first() || message.guild.members.cache.get(args[1]) 
+	   if (!member) {
+    let memberId = args[1]
+
+    console.log(memberId)
+
+    let foundMemberId = false
+    if (memberId.length === 18) {
+        foundMemberId = true
+    } else if (memberId.length > 18) {
+        memberId = memberId.substring(3)
+        memberId = memberId.slice(0, -1)
+
+        console.log(memberId)
+        if (memberId.length === 18) {
+            foundMemberId = true
+        }
+    }
+
+    if (foundMemberId === true) {
+        member = {
+            id: memberId
+        }
+    }
+
+    if (foundMemberId === false) {
+        return message.channel.send("Please specify a correct ID or mention correctly.");
+    }
+}
         try {
             client.bdd.query("SELECT * FROM user_blacklist WHERE user_id = ?", [member.id], function (err, result) {
                 if (err) throw err;
@@ -30,5 +57,7 @@ class CheckID extends Command {
         }
     }
 }
+
+
 
 module.exports = new CheckID;

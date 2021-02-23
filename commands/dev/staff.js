@@ -15,7 +15,7 @@ class Staff extends Command {
     }
 
     async run(client, message, args) {
-        if (message.author.id === client.config.owner.id) {
+        if (message.author.id === process.env.DISCORD_SERVER_OWNER_ID) {
             if (args[1] === "add") {
                 let member = message.mentions.members.first() || message.guild.members.cache.get(args[2]) || message.member;
                 if (!member) return message.channel.send("Please specify a correct ID or mention correctly.");

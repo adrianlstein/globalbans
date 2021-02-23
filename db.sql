@@ -30,7 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `user_blacklist` (
   `id` int(11) NOT NULL,
   `user_id` varchar(25) NOT NULL,
-  `reason` varchar(255) NOT NULL
+  `reason` varchar(255) NOT NULL,
+  `banning_guild` varchar(255) NOT NULL,
+  `banning_guild_id` varchar(255) NOT NULL,
+  `banned_by` varchar(255) NOT NULL,
+  `banned_by_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
