@@ -20,32 +20,32 @@ class Staff extends Command {
             if (args[1] === "add") {
                 let member = message.mentions.members.first() || client.users.cache.get(args[2]) 
 					   if (!member) {
-    let memberId = args[1]
+                            let memberId = args[2]
 
 
-    let foundMemberId = false
-    if (memberId.length === 18) {
-        foundMemberId = true
-    } else if (memberId.length > 18) {
-        memberId = memberId.substring(3)
-        memberId = memberId.slice(0, -1)
+                            let foundMemberId = false
+                            if (memberId.length === 18) {
+                                foundMemberId = true
+                            } else if (memberId.length > 18) {
+                                memberId = memberId.substring(3)
+                                memberId = memberId.slice(0, -1)
 
-       
-        if (memberId.length === 18) {
-            foundMemberId = true
-        }
-    }
+                            
+                                if (memberId.length === 18) {
+                                    foundMemberId = true
+                                }
+                            }
 
-    if (foundMemberId === true) {
-        member = {
-            id: memberId
-        }
-    }
+                            if (foundMemberId === true) {
+                                member = {
+                                    id: memberId
+                                }
+                            }
 
-    if (foundMemberId === false) {
-        return message.channel.send("Please specify a correct ID or mention correctly.");
-    }
-}
+                            if (foundMemberId === false) {
+                                return message.channel.send("Please specify a correct ID or mention correctly.");
+                            }
+                        }
 				
                 let reason = args[3].slice(" ");
                 if(!reason) return message.channel.send("Please specify a reason for this blacklist.");
@@ -70,32 +70,32 @@ class Staff extends Command {
             } else if (args[1] === "remove") {
                 let member = message.mentions.members.first() || client.users.cache.get(args[2]) 
 					   if (!member) {
-    let memberId = args[1]
+                            let memberId = args[2]
 
 
-    let foundMemberId = false
-    if (memberId.length === 18) {
-        foundMemberId = true
-    } else if (memberId.length > 18) {
-        memberId = memberId.substring(3)
-        memberId = memberId.slice(0, -1)
+                            let foundMemberId = false
+                            if (memberId.length === 18) {
+                                foundMemberId = true
+                            } else if (memberId.length > 18) {
+                                memberId = memberId.substring(3)
+                                memberId = memberId.slice(0, -1)
 
-    
-        if (memberId.length === 18) {
-            foundMemberId = true
-        }
-    }
+                            
+                                if (memberId.length === 18) {
+                                    foundMemberId = true
+                                }
+                            }
 
-    if (foundMemberId === true) {
-        member = {
-            id: memberId
-        }
-    }
+                            if (foundMemberId === true) {
+                                member = {
+                                    id: memberId
+                                }
+                            }
 
-    if (foundMemberId === false) {
-        return message.channel.send("Please specify a correct ID or mention correctly.");
-    }
-}
+                            if (foundMemberId === false) {
+                                return message.channel.send("Please specify a correct ID or mention correctly.");
+                            }
+                        }
 				
                 try {
                     client.bdd.query("SELECT * FROM user_blacklist WHERE user_id = ?", [member.id], function (err, result) {
