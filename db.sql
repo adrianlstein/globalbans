@@ -2,7 +2,7 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
+-- Hose : localhost:3306
 -- Généré le : mer. 12 août 2020 à 00:22
 -- Version du serveur :  10.1.44-MariaDB-0ubuntu0.18.04.1
 -- Version de PHP : 7.3.18
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `antiraid_db`
+-- Base of the : `antiraid_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user_blacklist`
+-- Structure create the table `user_blacklist`
 --
 
 CREATE TABLE `user_blacklist` (
@@ -40,7 +40,22 @@ CREATE TABLE `user_blacklist` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user_staff`
+-- Structure create the table `user_watchlist`
+--
+
+CREATE TABLE `user_watchlist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(25) NOT NULL,
+  `evidence` varchar(255) NOT NULL,
+  `warning_guild` varchar(255) NOT NULL,
+  `warning_guild_id` varchar(255) NOT NULL,
+  `warned_by` varchar(255) NOT NULL,
+  `warned_by_id` varchar(255) NOT NULL, 
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Structure create the table `user_watchlist`
 --
 
 CREATE TABLE `user_staff` (
@@ -49,33 +64,50 @@ CREATE TABLE `user_staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Index pour les tables déchargées
+-- Index for unloadeding tables
 --
 
 --
 -- Index pour la table `user_blacklist`
 --
+
+
+--
+-- Index pour la table `user_staff`
+--
+
 ALTER TABLE `user_blacklist`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `user_staff`
+--
+-- Index for the table `user_staff`
 --
 ALTER TABLE `user_staff`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT pour for unloading
 --
 
 --
--- AUTO_INCREMENT pour la table `user_blacklist`
+-- AUTO_INCREMENT for the table`user_blacklist`
+--
+ALTER TABLE `user_watchlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for the table`user_staff`
+--
+
+--
+-- AUTO_INCREMENT for the table`user_blacklist`
 --
 ALTER TABLE `user_blacklist`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT pour la table `user_staff`
+-- AUTO_INCREMENT for the table`user_staff`
 --
 ALTER TABLE `user_staff`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
