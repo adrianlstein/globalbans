@@ -15,9 +15,7 @@ class Roadmap extends Command {
     }
 
     async run(client, message) {
-        await message.channel.send('Check out the Roadmap here http://globalbans.xyz/').then(msg => {
-           
-        })
+        await message.channel.send('Check out the Roadmap here http://globalbans.xyz/')
     }
 }
 

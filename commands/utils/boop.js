@@ -15,9 +15,7 @@ class boop extends Command {
     }
 
     async run(client, message) {
-        await message.channel.send('Boop https://tenor.com/view/milk-mocha-nose-milk-and-mocha-nose-milk-and-mocha-boop-milk-mocha-boop-milk-and-mocha-nose-boop-gif-19678376').then(msg => {
-           
-        })
+        await message.channel.send('Boop https://tenor.com/view/milk-mocha-nose-milk-and-mocha-nose-milk-and-mocha-boop-milk-mocha-boop-milk-and-mocha-nose-boop-gif-19678376')
     }
 }
 
