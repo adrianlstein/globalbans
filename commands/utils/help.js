@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-const Command = require("../../structure/Command.js");
+const Command = require('../../structure/Command.js')
 
 class Help extends Command {
     constructor() {
@@ -11,7 +11,7 @@ class Help extends Command {
             usage: 'help [commande]',
             example: ['help', 'help ping'],
             aliases: ['h', 'aide']
-        });
+        })
     }
 
     async run(client, message, args) {
@@ -23,21 +23,21 @@ class Help extends Command {
                     thumbnail: {
                         url: 'https://cdn.discordapp.com/avatars/813673081738493983/391fd42bf32b89148d416239d1950413.webp?size=128'
                     },
-                    description: `Do !help [Command Name] for more informations!`,
+                    description: 'Do !help [Command Name] for more informations!',
                     fields: [
                         {
-                            name: "❱ Informations",
-                            value: client.commands.filter((command) => command.category === "utils").map((command) => `\`${command.name}\``).join(', '),
+                            name: '❱ Informations',
+                            value: client.commands.filter((command) => command.category === 'utils').map((command) => `\`${command.name}\``).join(', '),
                             inline: true,
                         },
                         {
-                            name: "❱ Dev",
-                            value: client.commands.filter((command) => command.category === "dev").map((command) => `\`${command.name}\``).join(', '),
+                            name: '❱ Dev',
+                            value: client.commands.filter((command) => command.category === 'dev').map((command) => `\`${command.name}\``).join(', '),
                             inline: true,
                         },
                         {
-                            name: "❱ Server Prottection (Staff)",
-                            value: client.commands.filter((command) => command.category === "anti-raid").map((command) => `\`${command.name}\``).join(', '),
+                            name: '❱ Server Prottection (Staff)',
+                            value: client.commands.filter((command) => command.category === 'anti-raid').map((command) => `\`${command.name}\``).join(', '),
                             inline: true,
                         }
                     ],
@@ -48,9 +48,9 @@ class Help extends Command {
                 }
             })
         } else if (args[1]) {
-            const command = client.commands.find(cmd => cmd.aliases.includes(args[1])) || client.commands.get(args[1]);
-            if (!command) return message.channel.send(`This command is invalid`);
-            let send = "";
+            const command = client.commands.find(cmd => cmd.aliases.includes(args[1])) || client.commands.get(args[1])
+            if (!command) return message.channel.send('This command is invalid')
+            let send = ''
             command.example.forEach(use => {
                 send += '!' + use + '\n'
             })
@@ -58,29 +58,29 @@ class Help extends Command {
                 embed: {
                     color: client.maincolor,
                     author: {
-                        name: `Help: Command ` + args[1],
+                        name: 'Help: Command ' + args[1],
                         icon_url: message.author.displayAvatarURL()
                     },
-                    description: ` <> are required arguments\nAnd [] are optionnal arguments`,
+                    description: ' <> are required arguments\nAnd [] are optionnal arguments',
                     footer: {
                         icon_url: client.user.displayAvatarURL(),
                         text: client.user.username
                     },
                     fields: [
                         {
-                            name: "Description",
+                            name: 'Description',
                             value: !command.description ? 'No description' : command.description,
                         },
                         {
-                            name: "Usage",
-                            value: !command.usage ? "No usage" : '!' + command.usage,
+                            name: 'Usage',
+                            value: !command.usage ? 'No usage' : '!' + command.usage,
                         },
                         {
-                            name: "Examples",
-                            value: !command.example ? `No examples` : send,
+                            name: 'Examples',
+                            value: !command.example ? 'No examples' : send,
                         },
                         {
-                            name: "Required Permissions",
+                            name: 'Required Permissions',
                             value: command.perms,
                         }]
                 }
@@ -89,4 +89,4 @@ class Help extends Command {
     }
 }
 
-module.exports = new Help;
+module.exports = new Help

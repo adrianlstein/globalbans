@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-const Command = require("../../structure/Command.js");
+const Command = require('../../structure/Command.js')
 
 class boop extends Command {
     constructor() {
@@ -11,14 +11,14 @@ class boop extends Command {
             usage: '',
             example: ['bopp'],
             aliases: ['boop']
-        });
+        })
     }
 
     async run(client, message) {
         await message.channel.send('Boop https://tenor.com/view/milk-mocha-nose-milk-and-mocha-nose-milk-and-mocha-boop-milk-mocha-boop-milk-and-mocha-nose-boop-gif-19678376').then(msg => {
            
-        });
+        })
     }
 }
 
-module.exports = new boop;
+module.exports = new boop

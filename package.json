@@ -14,5 +14,8 @@
     "dotenv": "^8.2.0",
     "moment": "^2.27.0",
     "mysql2": "^2.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0"
   }
 }
