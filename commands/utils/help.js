@@ -21,7 +21,7 @@ class Help extends Command {
                     color: client.maincolor,
                     title: `Commands of ${client.user.username}`,
                     thumbnail: {
-                        url: 'https://i.ibb.co/8KYCKJd/info.png'
+                        url: 'https://cdn.discordapp.com/avatars/813673081738493983/391fd42bf32b89148d416239d1950413.webp?size=128'
                     },
                     description: `Do !help [Command Name] for more informations!`,
                     fields: [
@@ -36,7 +36,7 @@ class Help extends Command {
                             inline: true,
                         },
                         {
-                            name: "❱ Anti-Raid (Staff)",
+                            name: "❱ Server Prottection (Staff)",
                             value: client.commands.filter((command) => command.category === "anti-raid").map((command) => `\`${command.name}\``).join(', '),
                             inline: true,
                         }

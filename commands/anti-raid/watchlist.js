@@ -5,11 +5,11 @@ const Command = require("../../structure/Command.js");
 class Staff extends Command {
     constructor() {
         super({
-            name: 'blacklist',
+            name: 'watchlist',
             category: 'anti-raid',
-            description: 'Allows people who are staff to blacklist one person.',
-            usage: 'blacklist',
-            example: ['blacklist <add/remove> <@user/id> <reason>'],
+            description: 'Allows people who are staff to add a person to a watchlist.',
+            usage: 'watchlist',
+            example: ['watchlist <add/remove> <@user/id> <reason>'],
             aliases: []
         });
     }
@@ -47,20 +47,20 @@ class Staff extends Command {
     }
 }
 				
-                let reason = args[3].slice(" ");
-                if(!reason) return message.channel.send("Please specify a reason for this blacklist.");
+                let evidence = args[3].slice(" ");
+                if(!evidence) return message.channel.send("Please provide some evidence for adding this user to the watchlist.");
                 try {
-                    client.bdd.query("SELECT * FROM user_blacklist WHERE user_id = ?", [member.id], function (err, result) {
+                    client.bdd.query("SELECT * FROM user_watchlist WHERE user_id = ?", [member.id], function (err, result) {
                         if (err) throw err;
                         if (result.length === 0) {
                             const user = message.member.user.tag
                             const userId = message.member.user.id
                             const guild = message.guild.name
                             const guildId = message.guild.id
-                            client.bdd.query(`INSERT INTO user_blacklist SET ?`, {user_id: member.id, reason: reason, banned_by: user, banning_guild: guild, banning_guild_id: guildId, banned_by_id: userId  });
-                            message.channel.send(`The user with the identification number **${member.id}** is now blacklisted for the following reason: **${reason}** !`)
+                            client.bdd.query(`INSERT INTO user_watchlist SET ?`, {user_id: member.id, evidence: evidence, warned_by: user, warning_guild: guild, warning_guild_id: guildId, warned_by_id: userId  });
+                            message.channel.send(`The user with the identification number **${member.id}** is now on the watchlist with the  evidence: **${evidence}** !`)
                         } else {
-                            message.channel.send(`The user with the identification number **${member.id}** is already blacklisted for the following reason: **${result.reason}** !`)
+                            message.channel.send(`The user with the identification number **${member.id}** is already on the watchlist for the following evidence: **${result.evidence}**`)
                         }
                     });
 
@@ -98,13 +98,13 @@ class Staff extends Command {
 }
 				
                 try {
-                    client.bdd.query("SELECT * FROM user_blacklist WHERE user_id = ?", [member.id], function (err, result) {
+                    client.bdd.query("SELECT * FROM user_watchlist WHERE user_id = ?", [member.id], function (err, result) {
                         if (err) throw err;
                         if (result.length !== 0) {
-                            client.bdd.query(`DELETE FROM user_blacklist WHERE user_id = ?`, [member.id]);
-                            message.channel.send(`The user with the identification number **${member.id}** was successfully removed from the blacklist..`)
+                            client.bdd.query(`DELETE FROM user_watchlist WHERE user_id = ?`, [member.id]);
+                            message.channel.send(`The user with the identification number **${member.id}** was successfully removed from the watchlist..`)
                         } else {
-                            message.channel.send(`The user with the identification number **${member.id}** is not blacklisted.`)
+                            message.channel.send(`The user with the identification number **${member.id}** is not on the watchlist.`)
                         }
                     });
 
