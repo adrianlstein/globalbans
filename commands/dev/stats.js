@@ -60,7 +60,7 @@ class Stats extends Command {
                                 inline: true
                             },
                             {
-                                name: 'Users on Watchlist',
+                                name: 'User\'s on Watchlist',
                                 value: userWatchlistCount,
                                 inline: true
                             }
