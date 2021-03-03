@@ -55,12 +55,12 @@ class Stats extends Command {
                                 inline: true
                             },
                             {
-                                name: 'Users Blacklisted',
+                                name: 'User\'s Blacklisted',
                                 value: bannedUserCount,
                                 inline: true
                             },
                             {
-                                name: 'Users Watchlist',
+                                name: 'Users on Watchlist',
                                 value: userWatchlistCount,
                                 inline: true
                             }
