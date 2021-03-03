@@ -58,9 +58,9 @@ class Staff extends Command {
                             const guild = message.guild.name
                             const guildId = message.guild.id
                             client.bdd.query('INSERT INTO user_blacklist SET ?', {user_id: member.id, reason: reason, banned_by: user, banning_guild: guild, banning_guild_id: guildId, banned_by_id: userId  })
-                            message.channel.send(`The user with the identification number **${member.id}** is now blacklisted for the following reason: **${reason}** !`)
+                            message.channel.send(`The user with the identification number **${member.id}** is now blacklisted for the following reason: **${reason}**`)
                         } else {
-                            message.channel.send(`The user with the identification number **${member.id}** is already blacklisted for the following reason: **${result.reason}** !`)
+                            message.channel.send(`The user with the identification number **${member.id}** is already blacklisted for the following reason: **${result[0].reason}**`)
                         }
                     })
 
