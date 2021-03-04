@@ -30,7 +30,7 @@ class Stats extends Command {
 
                 await message.channel.send({
                     embed: {
-                        color: '0xff00a2',
+                        color: '0xff0000',
                         title: client.user.username,
                         timestamp: new Date(),
                         footer: {
