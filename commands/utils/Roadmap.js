@@ -9,9 +9,9 @@ class Roadmap extends Command {
             name: 'Roadmap',
             category: 'dev',
             description: 'check out are roadmap',
-            usage: '',
+            usage: 'roadmap',
             example: ['Roadmap'],
-            aliases: ['Roadmap']
+            aliases: ['roadmap']
         })
     }
 
@@ -22,7 +22,7 @@ class Roadmap extends Command {
             .setColor('#ff0000')
             .setDescription('Check out the roadmap for the bot ')
             .setFooter('the smart way to protect your community , ')
-            .setImage('https://cdn.discordapp.com/attachments/796918861650985003/816706385559289916/gbbanslogo.png')
+            .setImage('https://cdn.discordapp.com/attachments/796918861650985003/817114074676461708/gbbanslogo.png')
             .setThumbnail('https://cdn.discordapp.com/avatars/813673081738493983/391fd42bf32b89148d416239d1950413.png?size=128')
             .setTimestamp())
         
