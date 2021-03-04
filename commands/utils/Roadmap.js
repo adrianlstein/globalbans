@@ -22,7 +22,7 @@ class Roadmap extends Command {
             .setColor('#ff0000')
             .setDescription('Check out the roadmap for the bot ')
             .setFooter('the smart way to protect your community , ')
-            .setImage('https://cdn.discordapp.com/attachments/796918861650985003/817114074676461708/gbbanslogo.png')
+            .setImage('http://globalbans.xyz/gbbanslogo.png')
             .setThumbnail('https://cdn.discordapp.com/avatars/813673081738493983/391fd42bf32b89148d416239d1950413.png?size=128')
             .setTimestamp())
         
