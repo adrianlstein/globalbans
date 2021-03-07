@@ -118,7 +118,6 @@ class CheckID extends Command {
                     }
 
                     paginationEmbed(message, watchlistEmbeds)
-
                 })
             })
         } catch (err) {
