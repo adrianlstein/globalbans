@@ -54,6 +54,14 @@ CREATE TABLE `user_watchlist` (
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `user_quarantine_decision` (
+  `id` int(11) NOT NULL,
+  `guild_id` varchar(255) NOT NULL,
+  `guild_user_id` varchar(25) NOT NULL,
+  `user_id` varchar(25) NOT NULL,
+  `banned` boolean NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Structure create the table `user_watchlist`
 --

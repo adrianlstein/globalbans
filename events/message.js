@@ -39,11 +39,25 @@ module.exports = async (client, message) => {
                 if (err) throw err
                 if (result.length !== 0) {
     
-    
-                    message.author.send(`You've been banned from the server **${message.guild.name}** because you've been blacklisted by our robot for the following reason: **${result[0].reason}** !`)
-                    message.guild.members.cache.get(message.author.id).ban({ reason: `GlobalBan Thread Detection | Reason for blacklist : ${result[0].reason}` })
-                        .then(console.log)
-                        .catch(console.error)
+                    client.bdd.query('SELECT * FROM user_quarantine_decision WHERE user_id = ? AND guild_id = ?', [author.id, message.guild.id], function (err, result) {
+                        if (err) throw err
+                        if (result.length === 0) {
+                            author.roles.add(globalBanRole)
+                        } else {
+                            if (result[0].banned === true) {
+                                message.author.send(`You've been banned from the server **${message.guild.name}** because you've been blacklisted by our robot for the following reason: **${result[0].reason}** !`)
+                                message.guild.members.cache.get(message.author.id).ban({ reason: `GlobalBan Thread Detection | Reason for blacklist : ${result[0].reason}` })
+                                    .then(console.log)
+                                    .catch(console.error)
+                                
+                            } 
+                            if (result[0].banned === false) {
+                                if (author.roles.cache.has(globalBanRole.id)) {
+                                    author.roles.remove(globalBanRole)
+                                }
+                            }
+                        }
+                    })
                 }
             })
         } else {
