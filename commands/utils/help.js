@@ -23,7 +23,7 @@ class Help extends Command {
                     thumbnail: {
                         url: 'https://cdn.discordapp.com/avatars/813673081738493983/391fd42bf32b89148d416239d1950413.webp?size=128'
                     },
-                    description: 'Do !help [Command Name] for more informations!',
+                    description: 'Do .help [Command Name] for more informations!',
                     fields: [
                         {
                             name: '❱ Informations',

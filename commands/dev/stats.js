@@ -1,4 +1,4 @@
-
+const discord = require ('discord.js')
 const Command = require('../../structure/Command.js')
 const { loadavg, cpus, totalmem } = require('os')
 
@@ -17,6 +17,7 @@ class Stats extends Command {
     async run(client, message) {
         let cpuCores = cpus().length
         
+        
         client.bdd.query('SELECT COUNT(*) AS namesCount FROM user_blacklist', async function (err, result) {
             if (err) throw err
             
@@ -29,6 +30,7 @@ class Stats extends Command {
 
                 await message.channel.send({
                     embed: {
+                        color: '0xff0000',
                         title: client.user.username,
                         timestamp: new Date(),
                         footer: {
@@ -40,8 +42,18 @@ class Stats extends Command {
                         },
                         fields: [
                             {
+                                name: 'My Creator\'s',
+                                value: 'Zeus and Master Eva',
+                                inline: false
+                            }, 
+                            {
                                 name: 'My users ',
-                                value: 'Users:' + `\`\`${client.users.cache.size}\`\``,
+                                value: 'Watching' + `\`\`${client.users.cache.size}\`\`Users`,
+                                inline: true
+                            },
+                            {
+                                name: 'My Server',
+                                value: 'Watching' + `\`\`${client.guilds.cache.size}\`\`Servers`,
                                 inline: true
                             },
                             {
@@ -55,14 +67,24 @@ class Stats extends Command {
                                 inline: true
                             },
                             {
-                                name: 'Users Blacklisted',
+                                name: 'User\'s Blacklisted',
                                 value: bannedUserCount,
                                 inline: true
                             },
                             {
-                                name: 'Users Watchlist',
+                                name: 'User\'s on Watchlist',
                                 value: userWatchlistCount,
                                 inline: true
+                            },
+                            {
+                                name: '___Support Server___',
+                                value: 'https://discord.gg/6R9G5UXWQ6',
+                                inline: true
+                            },
+                            {
+                                name: '___Website___',
+                                value: 'http://globalbans.xyz',
+                                inline: false
                             }
                         ]
                     }
