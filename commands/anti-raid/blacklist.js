@@ -47,7 +47,23 @@ class Staff extends Command {
                     }
                 }
 				
-                let reason = args[3].slice(' ')
+                let argsCopy = args
+                argsCopy.shift()
+                argsCopy.shift()
+                argsCopy.shift()
+
+                let reason
+
+                for (let argsCopyIndex = 0; argsCopyIndex < argsCopy.length; argsCopyIndex++) {
+                    const arg = argsCopy[argsCopyIndex]
+                    
+                    if (argsCopyIndex === 0) {
+                        reason = arg
+                    } else {
+                        reason += ' ' + arg
+                    }
+                }
+
                 if(!reason) return message.channel.send('Please specify a reason for this blacklist.')
                 try {
                     client.bdd.query('SELECT * FROM user_blacklist WHERE user_id = ?', [member.id], function (err, result) {

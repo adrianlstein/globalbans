@@ -47,10 +47,26 @@ class Staff extends Command {
                     }
                 }
 				
-                let evidence = args[3].slice(' ')
+                let argsCopy = args
+                argsCopy.shift()
+                argsCopy.shift()
+                argsCopy.shift()
+
+                let evidence
+
+                for (let argsCopyIndex = 0; argsCopyIndex < argsCopy.length; argsCopyIndex++) {
+                    const arg = argsCopy[argsCopyIndex]
+                    
+                    if (argsCopyIndex === 0) {
+                        evidence = arg
+                    } else {
+                        evidence += ' ' + arg
+                    }
+                }
+ 
                 if(!evidence) return message.channel.send('Please provide some evidence for adding this user to the watchlist.')
                 try {
-                    client.bdd.query('SELECT * FROM user_watchlist WHERE user_id = ?', [member.id], function (err, result) {
+                    client.bdd.query('SELECT * FROM user_watchlist WHERE user_id = ? AND warning_guild_id = ?', [member.id, message.guild.id], function (err, result) {
                         if (err) throw err
                         if (result.length === 0) {
                             const user = message.member.user.tag
@@ -60,7 +76,7 @@ class Staff extends Command {
                             client.bdd.query('INSERT INTO user_watchlist SET ?', {user_id: member.id, evidence: evidence, warned_by: user, warning_guild: guild, warning_guild_id: guildId, warned_by_id: userId  })
                             message.channel.send(`The user with the identification number **${member.id}** is now on the watchlist with the  evidence: **${evidence}** !`)
                         } else {
-                            message.channel.send(`The user with the identification number **${member.id}** is already on the watchlist for the following evidence: **${result.evidence}**`)
+                            message.channel.send(`The user with the identification number **${member.id}** is already on the watchlist for the following evidence: **${result[0].evidence}**`)
                         }
                     })
 
@@ -98,7 +114,7 @@ class Staff extends Command {
                 }
 				
                 try {
-                    client.bdd.query('SELECT * FROM user_watchlist WHERE user_id = ?', [member.id], function (err, result) {
+                    client.bdd.query('SELECT * FROM user_watchlist WHERE user_id = ? AND warning_guild_id = ?', [member.id, message.guild.id], function (err, result) {
                         if (err) throw err
                         if (result.length !== 0) {
                             client.bdd.query('DELETE FROM user_watchlist WHERE user_id = ?', [member.id])
