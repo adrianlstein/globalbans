@@ -24,14 +24,14 @@ class Staff extends Command {
 
 
                     let foundMemberId = false
-                    if (memberId.length === 18) {
+                    if (memberId.length === 18 || memberId.length === 17) {
                         foundMemberId = true
                     } else if (memberId.length > 18) {
                         memberId = memberId.substring(3)
                         memberId = memberId.slice(0, -1)
 
        
-                        if (memberId.length === 18) {
+                        if (memberId.length === 18 || memberId.length === 17) {
                             foundMemberId = true
                         }
                     }
@@ -74,14 +74,14 @@ class Staff extends Command {
 
 
                     let foundMemberId = false
-                    if (memberId.length === 18) {
+                    if (memberId.length === 18 || memberId.length === 17) {
                         foundMemberId = true
                     } else if (memberId.length > 18) {
                         memberId = memberId.substring(3)
                         memberId = memberId.slice(0, -1)
 
     
-                        if (memberId.length === 18) {
+                        if (memberId.length === 18 || memberId.length === 17) {
                             foundMemberId = true
                         }
                     }

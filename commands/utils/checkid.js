@@ -22,14 +22,14 @@ class CheckID extends Command {
             console.log(memberId)
 
             let foundMemberId = false
-            if (memberId.length === 18) {
+            if (memberId.length === 18 || memberId.length === 17) {
                 foundMemberId = true
             } else if (memberId.length > 18) {
                 memberId = memberId.substring(3)
                 memberId = memberId.slice(0, -1)
 
                 console.log(memberId)
-                if (memberId.length === 18) {
+                if (memberId.length === 18 || memberId.length === 17) {
                     foundMemberId = true
                 }
             }
