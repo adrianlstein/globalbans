@@ -84,11 +84,14 @@ class CheckID extends Command {
                             const watchlistResult = watchlistResults[watchlistResultIndex]
                             
                             const watchlistEmbed = new MessageEmbed()
+                                .setTitle('BLACKLIST AND WATCHLIST ENTRIES')
                                 .addFields(
+                                    { name: 'BANLIST', value: 'The Banlist shows how often a user was banned from Servers. We heartfully advice to keep track of people who were banned on other servers or to just ban them immediatly if the reason is damming.'},
                                     { name: 'Banning Guild', value: bannedByGuild, inline: true },
                                     { name: 'Banning Player', value: bannedByPlayer, inline: true },
                                     { name: 'Ban Reason', value: bannedReason, inline: true },
                                     { name: '\u200B', value: '\u200B' },
+                                    { name: 'WATCHLIST', value: 'Users can be put on the watchlist as part of evidence collection through several servers before a ban is being issued.'},
                                     { name: 'Watched by Guild', value: watchlistResult.warning_guild, inline: true },
                                     { name: 'Watched by Player', value: watchlistResult.warned_by, inline: true },
                                     { name: 'Evidence', value: watchlistResult.evidence, inline: true },
@@ -100,11 +103,14 @@ class CheckID extends Command {
 
                     if (watchlistEmbeds.length === 0) {
                         const noWatchlistDataEmbed = new MessageEmbed()
+                            .setTitle('BLACKLIST AND WATCHLIST ENTRIES')
                             .addFields(
+                                { name: 'BANLIST', value: 'The Banlist shows how often a user was banned from Servers. We heartfully advice to keep track of people who were banned on other servers or to just ban them immediatly if the reason is damming.'},
                                 { name: 'Banning Guild', value: bannedByGuild, inline: true },
                                 { name: 'Banning Player', value: bannedByPlayer, inline: true },
                                 { name: 'Ban Reason', value: bannedReason, inline: true },
                                 { name: '\u200B', value: '\u200B' },
+                                { name: 'WATCHLIST', value: 'Users can be put on the watchlist as part of evidence collection through several servers before a ban is being issued.'},
                                 { name: 'Watchlist Entries', value: 'No watchlist Entries found', inline: true },
                             )
 
